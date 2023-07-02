@@ -247,6 +247,7 @@ h1 {
   -moz-transform: translate(-50%, -50%) scale(1.4);
   -ms-transform: translate(-50%, -50%) scale(1.4);
   -o-transform: translate(-50%, -50%) scale(1.4);
+  user-select: none;
 }
 
 @media (max-width: 767px) {

@@ -248,6 +248,7 @@ h1 {
   -ms-transform: translate(-50%, -50%) scale(1.4);
   -o-transform: translate(-50%, -50%) scale(1.4);
   user-select: none;
+  pointer-events: none;
 }
 
 @media (max-width: 767px) {

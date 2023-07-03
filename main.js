@@ -46,6 +46,50 @@ input.addEventListener("keyup", function (event) {
   }
 });
 
+let searchOne = document.querySelector(".searchOne");
+let searchTwo = document.querySelector(".searchTwo");
+
+searchOne.onclick = function () {
+  if (input.value.length !== 0) {
+    let tasks = document.createElement("div");
+    let task = document.createElement("span");
+    let closeTask = document.createElement("span");
+    let done = document.createElement("i");
+    tasks.classList.add("tasks");
+    task.classList.add("task");
+    closeTask.classList.add("close");
+    done.className = "fa-solid fa-check done";
+    task.innerHTML = input.value;
+    closeTask.innerHTML = "X";
+    tasksHolder.appendChild(tasks);
+    tasks.appendChild(task);
+    tasks.appendChild(closeTask);
+    tasks.appendChild(done);
+    closeTask.onclick = function () {
+      tasks.remove();
+      let taskValues = document.querySelectorAll(".tasks .task");
+      taskValues = Array.from(taskValues);
+      array = taskValues.map(function (e) {
+        return e.innerHTML;
+      });
+      window.localStorage.clear();
+      window.localStorage.setItem("tasks1", array);
+    };
+    let test = document.querySelectorAll(".doneCome");
+    done.onclick = function () {
+      done.classList.toggle("doneCome");
+    };
+    input.value = "";
+    let taskValues = document.querySelectorAll(".tasks .task");
+    taskValues = Array.from(taskValues);
+    array = taskValues.map(function (e) {
+      return e.innerHTML;
+    });
+    window.localStorage.clear();
+    window.localStorage.setItem("tasks1", array);
+  }
+};
+
 if (window.localStorage.getItem("tasks1")) {
   for (
     i = 0;
@@ -144,6 +188,30 @@ search.addEventListener("keyup", async function (event) {
     });
   }
 });
+
+searchTwo.onclick = async function () {
+  imgs.innerHTML = "";
+  let value = search.value;
+  let api = await fetch(
+    `https://api.unsplash.com/search/photos?query=${value}&client_id=vC2jtf27i6TMl7t_LukYyeKDdoizIrhZuPLxiIxOIUE&per_page=100&content_filter=high`
+  );
+  api = await api.json();
+  for (i = 0; i < api.results.length; i++) {
+    let imgHolder = document.createElement("div");
+    let img = document.createElement("img");
+    imgHolder.className = "img-holder";
+    imgs.appendChild(imgHolder);
+    imgHolder.appendChild(img);
+    img.src = api.results[i].urls.regular;
+  }
+  let allImgs = document.querySelectorAll(".img-holder img");
+  allImgs.forEach(function (e) {
+    e.onclick = function () {
+      backgroundImg.src = e.src;
+      window.localStorage.setItem("backgroundImg", e.src);
+    };
+  });
+};
 
 if (window.localStorage.getItem("backgroundImg")) {
   backgroundImg.src = window.localStorage.getItem("backgroundImg");

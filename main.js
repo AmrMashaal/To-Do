@@ -1,11 +1,14 @@
 // بسم الله الرحمن الرحيم
+
 let input = document.querySelector("input");
 let tasksHolder = document.querySelector(".tasksHolder");
 let array;
 
+document.body.style.overflow = "hidden";
+
 input.addEventListener("keyup", function (event) {
   if (event.key === "Enter") {
-    if (input.value.length !== 0) {
+    if (input.value) {
       let tasks = document.createElement("div");
       let task = document.createElement("span");
       let closeTask = document.createElement("span");
@@ -30,7 +33,6 @@ input.addEventListener("keyup", function (event) {
         window.localStorage.clear();
         window.localStorage.setItem("tasks1", array);
       };
-      let test = document.querySelectorAll(".doneCome");
       done.onclick = function () {
         done.classList.toggle("doneCome");
       };
@@ -133,7 +135,7 @@ let imgs = document.querySelector(".imgs");
 let backgroundImg = document.querySelector(".backgroundImg");
 let title = document.querySelector(".title");
 
-plus.onclick = async function () {
+plus.onclick = function () {
   imgsApi.classList.toggle("imgsApiCome");
   if (plus.className === "fa-solid fa-plus plus") {
     plus.className = "fa-solid fa-minus plus";
@@ -159,6 +161,9 @@ document.addEventListener("click", function (event) {
     !plus.contains(event.target) === true &&
     !imgsApi.contains(event.target) === true
   ) {
+    if (plus.className === "fa-solid fa-minus plus") {
+      plus.className = "fa-solid fa-plus plus";
+    }
     imgsApi.classList.remove("imgsApiCome");
   }
 });

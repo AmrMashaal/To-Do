@@ -42,28 +42,16 @@ input[type="search"]::-ms-clear {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-}
-
-h1 {
-  text-transform: uppercase;
-  text-align: center;
-  font-size: 31px;
-  position: absolute;
-  top: -55px;
-  left: 50%;
-  transform: translateX(-50%);
-  user-select: none;
-  white-space: nowrap;
-  color: #a3a3a3;
-  width: 100%;
-  background-color: #171717;
-  border-radius: 5px 5px 0 0;
-  padding-top: 10px;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
 }
 
 .box {
-  background-color: #171717;
+  background-color: #171717b0;
   padding: 16px;
+  backdrop-filter: blur(25px);
   border-radius: 0 0 5px 5px;
   margin: 0 auto;
   height: 414px;
@@ -106,10 +94,12 @@ h1 {
 }
 
 .box .tasks .task {
-  width: 200px;
   display: block;
   line-height: 1.3;
   margin-left: 26px;
+  user-select: none;
+  position: relative;
+  padding: 0 20px 0 0;
 }
 
 .box .tasks .close {
@@ -200,6 +190,7 @@ h1 {
   height: 400px;
   overflow: auto;
   padding: 8px;
+  margin-top: 9px;
 }
 
 .imgsApi .img-holder {
@@ -310,6 +301,7 @@ h1 {
   left: 50%;
   height: 39px;
   transform: translateX(-50%);
+  z-index: 11;
 }
 
 .searchTwo {
@@ -326,4 +318,19 @@ h1 {
   justify-content: center;
   cursor: pointer;
   z-index: 1;
+}
+
+.onWork {
+  animation: onWork 1.7s infinite linear;
+}
+
+@keyframes onWork {
+  0%,
+  100% {
+    color: white;
+  }
+
+  50% {
+    color: gray;
+  }
 }

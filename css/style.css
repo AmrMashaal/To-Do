@@ -229,28 +229,12 @@ input[type="search"]::-ms-clear {
 }
 
 .backgroundImg {
-  position: absolute;
   width: 100%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%) scale(1.4);
+  height: 100%;
   filter: brightness(0.7);
-  -webkit-transform: translate(-50%, -50%) scale(1.4);
-  -moz-transform: translate(-50%, -50%) scale(1.4);
-  -ms-transform: translate(-50%, -50%) scale(1.4);
-  -o-transform: translate(-50%, -50%) scale(1.4);
   user-select: none;
   pointer-events: none;
-}
-
-@media (max-width: 767px) {
-  .backgroundImg {
-    transform: translate(-50%, -50%) scale(4.4);
-    -webkit-transform: translate(-50%, -50%) scale(4.4);
-    -moz-transform: translate(-50%, -50%) scale(4.4);
-    -ms-transform: translate(-50%, -50%) scale(4.4);
-    -o-transform: translate(-50%, -50%) scale(4.4);
-  }
+  object-fit: cover;
 }
 
 .title {
